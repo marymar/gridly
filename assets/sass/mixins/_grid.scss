@@ -1,0 +1,17 @@
+@mixin grid($no-of-cols, $col-partial-name, $gap) {
+    @for $i from 1 through $no-of-cols {
+        .#{$col-partial-name}-#{$i} {
+            @include calculate-width-of-col($i, $no-of-cols);
+        }
+    }
+}
+
+@mixin default-for-cols($cols-prefix) {
+    [class^='#{$cols-prefix}'] {
+        @include calculate-width-of-col (1, 1);
+    }
+}
+
+@mixin calculate-width-of-col($col-span, $no-of-cols) {
+    width: ($col-span / $no-of-cols) * 100%;
+}

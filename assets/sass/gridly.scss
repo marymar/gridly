@@ -1,0 +1,98 @@
+/**
+ * Gridly
+ * Visualizing the grid
+*/
+
+@import 'global/variables';
+@import 'mixins/media-queries';
+@import 'mixins/grid';
+
+@mixin viewport-info-reset ($vp-size) {
+    &__section {
+        display: none;
+
+        &--#{$vp-size} {
+            display: block;
+        }
+    }
+    
+    
+}
+
+$gridly-color-border: #597;
+$gridly-color-box: #ddd;
+
+$gridly-color-row-border: #aaa;
+
+$gridly-color-viewport: #fff;
+$gridly-color-viewport-info-xs: #a00;
+$gridly-color-viewport-info-s: #aa0;
+$gridly-color-viewport-info-sm: #a0a;
+$gridly-color-viewport-info-m: #00a;
+$gridly-color-viewport-info-ml: #0aa;
+
+// visualize grid
+[class*="col-"] {
+    background-color: $gridly-color-box;
+    outline: 1px solid $gridly-color-border;
+}
+
+//viewport info block
+.viewport-info {
+    @include viewport-info-reset(xs);
+
+    background-color: $gridly-color-viewport-info-xs;
+    color: $gridly-color-viewport;
+    font-weight: 700;
+    opacity: .5;
+    padding: 2em;
+    position: fixed;
+    right: 0;
+    top: 0;
+    
+    @include for-viewport-width($viewport-width-s) {
+        @include viewport-info-reset(s);
+        background-color: $gridly-color-viewport-info-s;
+    }
+    
+    //tablet
+    @include for-viewport-width($viewport-width-sm) {
+        @include viewport-info-reset(sm);
+        background-color: $gridly-color-viewport-info-sm;
+    }
+
+    //desktop
+    @include for-viewport-width($viewport-width-m) {
+        @include viewport-info-reset(m);
+        background-color: $gridly-color-viewport-info-m;
+    }
+
+    //big size...
+    @include for-viewport-width($viewport-width-ml) {
+        @include viewport-info-reset(ml);
+        background-color: $gridly-color-viewport-info-ml;
+    }
+}
+
+
+
+.gridly {
+
+    &__main-title {
+        margin-top: 3em;
+    }
+    
+    &__separator {
+        border-top: 1px dotted $gridly-color-row-border;
+        line-height: 0;
+        margin: 1em 0;
+
+        @include for-viewport-width($viewport-width-s) {
+            margin-left: -$layout-gutter;
+            margin-right: -$layout-gutter;
+        }
+    }
+}
+
+
+

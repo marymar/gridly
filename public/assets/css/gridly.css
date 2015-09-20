@@ -1,0 +1,109 @@
+/**
+ * Gridly
+ * Visualizing the grid
+*/
+/**
+ * VARIABLES
+ */
+/**
+ * MEDIA QUERIES
+ */
+/* line 35, ../../../assets/sass/gridly.scss */
+[class*="col-"] {
+  background-color: #ddd;
+  outline: 1px solid #597;
+}
+
+/* line 41, ../../../assets/sass/gridly.scss */
+.viewport-info {
+  background-color: #a00;
+  color: #fff;
+  font-weight: 700;
+  opacity: .5;
+  padding: 2em;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+/* line 11, ../../../assets/sass/gridly.scss */
+.viewport-info__section {
+  display: none;
+}
+/* line 14, ../../../assets/sass/gridly.scss */
+.viewport-info__section--xs {
+  display: block;
+}
+@media (min-width: 480px) {
+  /* line 41, ../../../assets/sass/gridly.scss */
+  .viewport-info {
+    background-color: #aa0;
+  }
+  /* line 11, ../../../assets/sass/gridly.scss */
+  .viewport-info__section {
+    display: none;
+  }
+  /* line 14, ../../../assets/sass/gridly.scss */
+  .viewport-info__section--s {
+    display: block;
+  }
+}
+@media (min-width: 640px) {
+  /* line 41, ../../../assets/sass/gridly.scss */
+  .viewport-info {
+    background-color: #a0a;
+  }
+  /* line 11, ../../../assets/sass/gridly.scss */
+  .viewport-info__section {
+    display: none;
+  }
+  /* line 14, ../../../assets/sass/gridly.scss */
+  .viewport-info__section--sm {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  /* line 41, ../../../assets/sass/gridly.scss */
+  .viewport-info {
+    background-color: #00a;
+  }
+  /* line 11, ../../../assets/sass/gridly.scss */
+  .viewport-info__section {
+    display: none;
+  }
+  /* line 14, ../../../assets/sass/gridly.scss */
+  .viewport-info__section--m {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  /* line 41, ../../../assets/sass/gridly.scss */
+  .viewport-info {
+    background-color: #0aa;
+  }
+  /* line 11, ../../../assets/sass/gridly.scss */
+  .viewport-info__section {
+    display: none;
+  }
+  /* line 14, ../../../assets/sass/gridly.scss */
+  .viewport-info__section--ml {
+    display: block;
+  }
+}
+
+/* line 81, ../../../assets/sass/gridly.scss */
+.gridly__main-title {
+  margin-top: 3em;
+}
+/* line 85, ../../../assets/sass/gridly.scss */
+.gridly__separator {
+  border-top: 1px dotted #aaa;
+  line-height: 0;
+  margin: 1em 0;
+}
+@media (min-width: 480px) {
+  /* line 85, ../../../assets/sass/gridly.scss */
+  .gridly__separator {
+    margin-left: -7px;
+    margin-right: -7px;
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "name": "Gridly",
-  "version": "0.1.0",
+  "name": "gridly",
+  "version": "0.1.1",
   "description": "Gridly - Grid Set Light - vomar.de",
   "author": "Mary Vokicic",
   "devDependencies": {

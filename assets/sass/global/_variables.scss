@@ -10,16 +10,9 @@ $layout-wrapper-width-xs: 95%;
 $layout-wrapper-width-m: 90%;
 $layout-wrapper-width-sm: 90%;
 
-// FONTS
-$font-default: sans-serif;
-
-
-// FONT COLORS
-$font-color-default: #777;
-
-
-//COLORS
-$color-white: #fff;
-$color-rum: #716b85;
-$color-blue: #28494c;
-$color-tiara: #cad2d3;
+// MEDIA QUERIES
+$viewport-width-xs: 320px;
+$viewport-width-s: 480px;
+$viewport-width-sm: 640px;
+$viewport-width-m: 768px;
+$viewport-width-ml: 1024px;

@@ -14,22 +14,22 @@ module.exports = function(grunt) {
             },
             
         },
-        compass: {
-            src: '**/*.scss',
+        sass: {
             dist: {
-                options: {
-                    sassDir: 'assets/sass',
-                    cssDir: 'public/assets/css'
-                }
+                files: [{
+                        expand: true,
+                        cwd: 'assets/sass',
+                        src: ['*.scss'],
+                        dest: 'public/assets/css',
+                        ext: '.css'
+                      }]
             }
         },
         
         copy: {
           main: {
             files: [
-              // includes files within path
               {expand: true, cwd: 'html/', src: ['**'], dest: 'public/'}
-//              {expand: true, src: ['html/**'], rwd: 'html',  dest: 'public/', filter: 'isFile'}
             ],
           },
         },
@@ -40,18 +40,18 @@ module.exports = function(grunt) {
                 'assets/**/*.scss',
                 'html/**/*.htm*'
                 ],
-            tasks: ['scsslint', 'compass', 'copy']
+            tasks: ['scsslint', 'sass', 'copy']
         }
         
     });
   
     //register tasks
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ['scsslint', 'compass']);
+    grunt.registerTask('build', ['scsslint', 'sass']);
 
     //load tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-scss-lint');
     grunt.loadNpmTasks('grunt-contrib-copy');
 };

@@ -2,12 +2,6 @@
  * MEDIA QUERIES
  */
 
-$viewport-width-xs: 320px;
-$viewport-width-s: 480px;
-$viewport-width-sm: 640px;
-$viewport-width-m: 768px;
-$viewport-width-ml: 1024px;
-
 @mixin for-viewport-width($type-width) {
     @media (min-width: $type-width) {
         @content;

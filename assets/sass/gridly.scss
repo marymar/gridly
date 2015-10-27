@@ -3,9 +3,9 @@
  * Visualizing the grid
 */
 
-@import 'global/variables';
-@import 'mixins/media-queries';
-@import 'mixins/grid';
+@import 'global/variables',
+'mixins/media-queries',
+'mixins/grid';
 
 @mixin viewport-info-reset ($vp-size) {
     &__section {
@@ -15,10 +15,18 @@
             display: block;
         }
     }
-    
-    
 }
 
+// FONTS
+$font-default: sans-serif;
+
+// FONT COLORS
+$font-color-default: #777;
+
+//BODY BG COLOR
+$body-bg-color: #fff;
+
+//GRIDLY COLORS
 $gridly-color-border: #597;
 $gridly-color-box: #ddd;
 
@@ -92,6 +100,28 @@ $gridly-color-viewport-info-ml: #0aa;
             margin-right: -$layout-gutter;
         }
     }
+}
+
+// RESET
+body {
+    background: none $body-bg-color;
+    color: $font-color-default;
+    font-family: $font-default;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2 {
+    color: $font-color-default;
+    font-family: $font-default;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0 0 0 3 * $layout-gutter;
 }
 
 

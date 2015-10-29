@@ -2,8 +2,6 @@
  * LAYOUT
  */
 
-$col-prefix: 'col-';
-
 //setting for xs devices
 [class^='#{$col-prefix}'] {
     padding: $layout-gutter;

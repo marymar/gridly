@@ -10,7 +10,7 @@
  * generate the grid system
  */
 [class*="col-"] {
-  background-color: #ddd;
+  background-color: rgba(200, 200, 200, 0.5);
   outline: 1px solid #597;
   padding: 1em; }
 
@@ -71,6 +71,12 @@
     .gridly__separator {
       margin-left: -7px;
       margin-right: -7px; } }
+.gridly__row--blue {
+  background-color: rgba(0, 0, 255, 0.5); }
+.gridly__row--green {
+  background-color: rgba(0, 255, 0, 0.5); }
+.gridly__row--red {
+  background-color: rgba(255, 0, 0, 0.5); }
 
 body {
   background: none #fff;

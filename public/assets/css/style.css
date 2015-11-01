@@ -265,4 +265,9 @@
 [class^='col-'] {
   box-sizing: border-box; }
 
+.row:after {
+  clear: both;
+  content: '';
+  display: table; }
+
 /*# sourceMappingURL=style.css.map */

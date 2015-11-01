@@ -41,19 +41,23 @@
  * generate the grid system
  */
 
-@each $vp-setting, $vp-value in $viewport-map {
-    @if (map-get($vp-value, 'default')) {
-        @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
-        @include content-wrapper(map-get($vp-value, 'wrapper-width'))
-    } @else {
-        @include for-viewport-width(map-get($vp-value, 'min-width')) {
+@mixin generate-grid-sys() {
+
+    @each $vp-setting, $vp-value in $viewport-map {
+        @if (map-get($vp-value, 'default')) {
             @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
             @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+        } @else {
+            @include for-viewport-width(map-get($vp-value, 'min-width')) {
+                @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
+                @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+            }
         }
     }
-}
 
-[class^='#{$col-prefix}'] {
-    box-sizing: border-box;
-    float: left;
+    [class^='#{$col-prefix}'] {
+        box-sizing: border-box;
+        float: left;
+    }
+
 }

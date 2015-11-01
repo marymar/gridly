@@ -1,2 +1,4 @@
 @import 'global/variables';
 @import 'mixins/grid';
+
+@include generate-grid-sys();

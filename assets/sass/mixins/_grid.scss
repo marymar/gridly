@@ -12,6 +12,7 @@
     @for $i from 1 through $no-of-cols {
         .#{$col-partial-name}-#{$i} {
             @include calculate-width-of-col($i, $no-of-cols);
+            float: left;
         }
     }
 }
@@ -21,6 +22,12 @@
     [class^='#{$cols-prefix}'] {
         @include calculate-width-of-col (1, 1);
     }
+}
+
+//settings per viewport
+@mixin settings-per-viewport($vp-value, $vp-setting) {
+    @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
+    @include content-wrapper(map-get($vp-value, 'wrapper-width'))
 }
 
 //width of columns
@@ -45,19 +52,16 @@
 
     @each $vp-setting, $vp-value in $viewport-map {
         @if (map-get($vp-value, 'default')) {
-            @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
-            @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+            @include settings-per-viewport($vp-value, $vp-setting);
         } @else {
             @include for-viewport-width(map-get($vp-value, 'min-width')) {
-                @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
-                @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+                @include settings-per-viewport($vp-value, $vp-setting);
             }
         }
     }
 
     [class^='#{$col-prefix}'] {
         box-sizing: border-box;
-        float: left;
     }
 
 }

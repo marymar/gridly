@@ -29,7 +29,7 @@ $body-bg-color: #fff;
 
 //GRIDLY COLORS
 $gridly-color-border: #597;
-$gridly-color-box: #ddd;
+$gridly-color-box: rgba(200, 200, 200, .5);
 
 $gridly-color-row-border: #aaa;
 
@@ -93,6 +93,20 @@ $gridly-background-color-viewport-info: (
         @include for-viewport-width(map-get($gridly-s-setting, 'min-width')) {
             margin-left: -$gridly-layout-gutter;
             margin-right: -$gridly-layout-gutter;
+        }
+    }
+    
+    &__row {
+        &--blue {
+            background-color: rgba(0, 0, 255, .5);
+        }
+
+        &--green {
+            background-color: rgba(0, 255, 0, .5);
+        }
+
+        &--red {
+            background-color: rgba(255, 0, 0, .5);
         }
     }
 }

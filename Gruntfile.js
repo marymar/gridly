@@ -53,7 +53,7 @@ module.exports = function(grunt) {
   
     //register tasks
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ['scsslint', 'sass']);
+    grunt.registerTask('build', ['scsslint', 'sass', 'copy']);
     
     //load tasks
     grunt.loadTasks('tasks');

@@ -4,16 +4,13 @@
  
 // GRID SETTINGS
 $col-prefix: 'col-';
-$layout-gutter: 7px;
-$layout-padding: 7px;
 $layout-grids: 12;
-$layout-wrapper-width-xs: 95%;
-$layout-wrapper-width-m: 90%;
-$layout-wrapper-width-sm: 90%;
+$number-of-grids: 12;
 
-// MEDIA QUERIES
-$viewport-width-xs: 320px;
-$viewport-width-s: 480px;
-$viewport-width-sm: 640px;
-$viewport-width-m: 768px;
-$viewport-width-ml: 1024px;
+$viewport-map: (
+    xs: (min-width: 320px, gutter: 7px, wrapper-width: 95%, default: true),
+    s: (min-width: 480px, gutter: 7px, wrapper-width: 90%),
+    sm: (min-width: 640px, gutter: 7px),
+    m: (min-width: 768px, gutter: 7px),
+    ml: (min-width: 1024px, gutter: 7px)
+);

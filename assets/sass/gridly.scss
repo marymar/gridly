@@ -3,8 +3,9 @@
  * Visualizing the grid
 */
 
+$gridly-layout-gutter: 7px;
+
 @import 'global/variables',
-'mixins/media-queries',
 'mixins/grid';
 
 @mixin viewport-info-reset ($vp-size) {
@@ -33,23 +34,26 @@ $gridly-color-box: #ddd;
 $gridly-color-row-border: #aaa;
 
 $gridly-color-viewport: #fff;
-$gridly-color-viewport-info-xs: #a00;
-$gridly-color-viewport-info-s: #aa0;
-$gridly-color-viewport-info-sm: #a0a;
-$gridly-color-viewport-info-m: #00a;
-$gridly-color-viewport-info-ml: #0aa;
+$gridly-background-color-viewport-info: (
+    xs: #a00,
+    s: #aa0,
+    sm: #a0a,
+    m: #00a,
+    ml: #0aa
+);
 
 // visualize grid
 [class*="col-"] {
     background-color: $gridly-color-box;
     outline: 1px solid $gridly-color-border;
+    padding: 1em;
 }
 
 //viewport info block
 .viewport-info {
     @include viewport-info-reset(xs);
 
-    background-color: $gridly-color-viewport-info-xs;
+    background-color: map-get($gridly-background-color-viewport-info, 'xs');
     color: $gridly-color-viewport;
     font-weight: 700;
     opacity: .5;
@@ -58,46 +62,37 @@ $gridly-color-viewport-info-ml: #0aa;
     right: 0;
     top: 0;
     
-    @include for-viewport-width($viewport-width-s) {
-        @include viewport-info-reset(s);
-        background-color: $gridly-color-viewport-info-s;
-    }
     
-    //tablet
-    @include for-viewport-width($viewport-width-sm) {
-        @include viewport-info-reset(sm);
-        background-color: $gridly-color-viewport-info-sm;
-    }
-
-    //desktop
-    @include for-viewport-width($viewport-width-m) {
-        @include viewport-info-reset(m);
-        background-color: $gridly-color-viewport-info-m;
-    }
-
-    //big size...
-    @include for-viewport-width($viewport-width-ml) {
-        @include viewport-info-reset(ml);
-        background-color: $gridly-color-viewport-info-ml;
+    @each $vp-setting, $vp-value in $viewport-map {
+        @if (map-get($vp-value, 'default')) {
+            @include viewport-info-reset($vp-setting);
+            background-color: map-get($gridly-background-color-viewport-info, $vp-setting);
+        } @else {
+            @include for-viewport-width(map-get($vp-value, 'min-width')) {
+                @include viewport-info-reset($vp-setting);
+                background-color: map-get($gridly-background-color-viewport-info, $vp-setting);
+            }
+        }
     }
 }
 
 
 
 .gridly {
-
     &__main-title {
         margin-top: 3em;
     }
     
     &__separator {
-        border-top: 1px dotted $gridly-color-row-border;
+        clear: both;
         line-height: 0;
         margin: 1em 0;
 
-        @include for-viewport-width($viewport-width-s) {
-            margin-left: -$layout-gutter;
-            margin-right: -$layout-gutter;
+        $gridly-s-setting: map-get($viewport-map, 's');
+
+        @include for-viewport-width(map-get($gridly-s-setting, 'min-width')) {
+            margin-left: -$gridly-layout-gutter;
+            margin-right: -$gridly-layout-gutter;
         }
     }
 }
@@ -121,7 +116,7 @@ h2 {
 ul,
 ol {
     margin: 0;
-    padding: 0 0 0 3 * $layout-gutter;
+    padding: 0 0 0 3 * $gridly-layout-gutter;
 }
 
 

@@ -1,6 +1,12 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        gridly: {
+            create: {
+                colSize: 12,
+                gutter: '7px'
+            }
+        },
         scsslint: {
             allFiles: [
                 'assets/sass/**/*.scss'
@@ -48,8 +54,10 @@ module.exports = function(grunt) {
     //register tasks
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', ['scsslint', 'sass']);
-
+    
     //load tasks
+    grunt.loadTasks('tasks');
+    
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-scss-lint');

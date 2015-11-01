@@ -1,9 +1,0 @@
-/**
- * MEDIA QUERIES
- */
-
-@mixin for-viewport-width($type-width) {
-    @media (min-width: $type-width) {
-        @content;
-    }
-}

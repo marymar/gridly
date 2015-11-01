@@ -1,4 +1,14 @@
-@mixin grid($no-of-cols, $col-partial-name, $gap) {
+/* grid */
+
+// grid media queries
+@mixin for-viewport-width($type-width) {
+    @media (min-width: $type-width) {
+        @content;
+    }
+}
+
+//grid
+@mixin grid($no-of-cols, $col-partial-name) {
     @for $i from 1 through $no-of-cols {
         .#{$col-partial-name}-#{$i} {
             @include calculate-width-of-col($i, $no-of-cols);
@@ -6,12 +16,44 @@
     }
 }
 
+//columns
 @mixin default-for-cols($cols-prefix) {
     [class^='#{$cols-prefix}'] {
         @include calculate-width-of-col (1, 1);
     }
 }
 
+//width of columns
 @mixin calculate-width-of-col($col-span, $no-of-cols) {
     width: ($col-span / $no-of-cols) * 100%;
+}
+
+//content wrapper
+@mixin content-wrapper($wrapper-width) {
+    .content-wrapper {
+        margin: 0 auto;
+        width: $wrapper-width;
+    }
+}
+
+
+/* ------------------------------------------------------
+ * generate the grid system
+ */
+
+@each $vp-setting, $vp-value in $viewport-map {
+    @if (map-get($vp-value, 'default')) {
+        @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
+        @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+    } @else {
+        @include for-viewport-width(map-get($vp-value, 'min-width')) {
+            @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
+            @include content-wrapper(map-get($vp-value, 'wrapper-width'))
+        }
+    }
+}
+
+[class^='#{$col-prefix}'] {
+    box-sizing: border-box;
+    float: left;
 }

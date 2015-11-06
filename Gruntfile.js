@@ -1,12 +1,6 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        gridly: {
-            create: {
-                colSize: 12,
-                gutter: '7px'
-            }
-        },
         scsslint: {
             allFiles: [
                 'assets/sass/**/*.scss'
@@ -21,7 +15,19 @@ module.exports = function(grunt) {
             
         },
         sass: {
+            dev: {
+                files: [{
+                        expand: true,
+                        cwd: 'assets/sass',
+                        src: ['*.scss'],
+                        dest: 'public/assets/css',
+                        ext: '.css'
+                      }]
+            },
             dist: {
+                options: {                       // Target options
+                    style: 'compressed'
+                },
                 files: [{
                         expand: true,
                         cwd: 'assets/sass',
@@ -46,14 +52,14 @@ module.exports = function(grunt) {
                 'assets/**/*.scss',
                 'html/**/*.htm*'
                 ],
-            tasks: ['scsslint', 'sass', 'copy']
+            tasks: ['scsslint', 'sass:dev', 'copy']
         }
         
     });
   
     //register tasks
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ['scsslint', 'sass', 'copy']);
+    grunt.registerTask('build', ['scsslint', 'sass:dist', 'copy']);
     
     //load tasks
     grunt.loadTasks('tasks');

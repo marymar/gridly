@@ -6,6 +6,7 @@
 $col-prefix: 'col-';
 $layout-grids: 12;
 $number-of-grids: 12;
+$grid-gutter: 1em;
 
 $viewport-map: (
     xs: (min-width: 320px, gutter: 7px, wrapper-width: 95%, default: true),

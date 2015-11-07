@@ -29,6 +29,7 @@ $body-bg-color: #fff;
 
 //GRIDLY COLORS
 $gridly-color-border: #597;
+$gridly-color-content-wrapper-border: #888;
 $gridly-color-box: rgba(200, 200, 200, .5);
 
 $gridly-color-row-border: #aaa;
@@ -43,10 +44,9 @@ $gridly-background-color-viewport-info: (
 );
 
 // visualize grid
-[class*="col-"] {
+[class^="col-"] {
     background-color: $gridly-color-box;
     outline: 1px solid $gridly-color-border;
-    padding: 1em;
 }
 
 //viewport info block
@@ -79,6 +79,12 @@ $gridly-background-color-viewport-info: (
 
 
 .gridly {
+    //visualize content wrapper
+    &__content-wrapper {
+        border-left: 1px dashed $gridly-color-content-wrapper-border;
+        border-right: 1px dashed $gridly-color-content-wrapper-border;
+    }
+
     &__main-title {
         margin-top: 3em;
     }

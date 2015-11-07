@@ -68,9 +68,13 @@
 
     [class^='#{$col-prefix}'] {
         box-sizing: border-box;
+        padding: $grid-gutter;
     }
 
     .row {
+        margin-left: -$grid-gutter;
+        margin-right: -$grid-gutter;
+        
         &:after {
             clear: both;
             content: '';

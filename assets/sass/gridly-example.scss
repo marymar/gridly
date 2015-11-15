@@ -1,0 +1,141 @@
+/**
+ * Gridly
+ * Visualizing the grid
+*/
+
+$gridly-layout-gutter: 7px;
+
+@import 'global/variables',
+'mixins/grid';
+
+@mixin viewport-info-reset ($vp-size) {
+    &__section {
+        display: none;
+
+        &--#{$vp-size} {
+            display: block;
+        }
+    }
+}
+
+// FONTS
+$font-default: sans-serif;
+
+// FONT COLORS
+$font-color-default: #777;
+
+//BODY BG COLOR
+$body-bg-color: #fff;
+
+//GRIDLY COLORS
+$gridly-color-border: #597;
+$gridly-color-content-wrapper-border: #888;
+$gridly-color-box: rgba(200, 200, 200, .5);
+
+$gridly-color-row-border: #aaa;
+
+$gridly-color-viewport: #fff;
+$gridly-background-color-viewport-info: (
+    xs: #a00,
+    s: #aa0,
+    sm: #a0a,
+    m: #00a,
+    ml: #0aa
+);
+
+// visualize grid
+[class^="col-"] {
+    background-color: $gridly-color-box;
+    outline: 1px solid $gridly-color-border;
+}
+
+//viewport info block
+.viewport-info {
+    @include viewport-info-reset(xs);
+
+    background-color: map-get($gridly-background-color-viewport-info, 'xs');
+    color: $gridly-color-viewport;
+    font-weight: 700;
+    opacity: .5;
+    padding: 2em;
+    position: fixed;
+    right: 0;
+    top: 0;
+    
+    
+    @each $vp-setting, $vp-value in $viewport-map {
+        @if (map-get($vp-value, 'default')) {
+            @include viewport-info-reset($vp-setting);
+            background-color: map-get($gridly-background-color-viewport-info, $vp-setting);
+        } @else {
+            @include for-viewport-width($vp-setting) {
+                @include viewport-info-reset($vp-setting);
+                background-color: map-get($gridly-background-color-viewport-info, $vp-setting);
+            }
+        }
+    }
+}
+
+
+
+.gridly {
+    //visualize content wrapper
+    &__content-wrapper {
+        border-left: 1px dashed $gridly-color-content-wrapper-border;
+        border-right: 1px dashed $gridly-color-content-wrapper-border;
+    }
+
+    &__main-title {
+        margin-top: 3em;
+    }
+    
+    &__separator {
+        clear: both;
+        line-height: 0;
+        margin: 1em 0;
+
+        @include for-viewport-width('s') {
+            margin-left: -$gridly-layout-gutter;
+            margin-right: -$gridly-layout-gutter;
+        }
+    }
+    
+    &__row {
+        &--blue {
+            background-color: rgba(0, 0, 255, .5);
+        }
+
+        &--green {
+            background-color: rgba(0, 255, 0, .5);
+        }
+
+        &--red {
+            background-color: rgba(255, 0, 0, .5);
+        }
+    }
+}
+
+// RESET
+body {
+    background: none $body-bg-color;
+    color: $font-color-default;
+    font-family: $font-default;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2 {
+    color: $font-color-default;
+    font-family: $font-default;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0 0 0 3 * $gridly-layout-gutter;
+}
+
+
+

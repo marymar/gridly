@@ -13,34 +13,12 @@
     }
 }
 
-//table-row
-@mixin table-row($table-row-name) {
-    .#{$table-row-name} {
-        display: table;
-        table-layout: fixed;
-        width: calc(100% + #{2 * $grid-gutter});
-
-        > :not([class*='#{$table-cell-prefix}-']) {
-            // scss-lint:disable ImportantRule
-            display: none !important;
-        }
-    }
-
-}
-
 //grid
-@mixin grid($no-of-cols, $col-partial-name, $table-cell-partial-name) {
+@mixin grid($no-of-cols, $col-partial-name) {
     @for $i from 1 through $no-of-cols {
         .#{$col-partial-name}-#{$i} {
             @include calculate-width-of-col($i, $no-of-cols);
             float: left;
-        }
-
-        .#{$table-cell-partial-name}-#{$i} {
-            @include calculate-width-of-col($i, $no-of-cols);
-            display: table-cell;
-            // scss-lint:disable ImportantRule
-            float: none !important;
         }
     }
 }
@@ -54,9 +32,8 @@
 
 //settings per viewport
 @mixin settings-per-viewport($vp-value, $vp-setting) {
-    @include grid($number-of-grids, '#{$col-prefix}-#{$vp-setting}', '#{$table-cell-prefix}-#{$vp-setting}');
-    @include table-row('#{$table-row-prefix}-#{$vp-setting}');
-    @include content-wrapper(map-get($vp-value, 'wrapper-width'));
+    @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
+    @include content-wrapper(map-get($vp-value, 'wrapper-width'))
 }
 
 //width of columns
@@ -89,15 +66,15 @@
         }
     }
 
-    [class^='#{$col-prefix}-'] {
+    [class^='#{$col-prefix}'] {
         box-sizing: border-box;
         padding: $grid-gutter;
     }
 
-    .#{$row-prefix} {
+    .row {
         margin-left: -$grid-gutter;
         margin-right: -$grid-gutter;
-
+        
         &:after {
             clear: both;
             content: '';

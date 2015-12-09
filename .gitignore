@@ -2,6 +2,5 @@
 .idea/
 .sass-cache/
 scss-lint-report.xml
-/public
 /node_modules
 /stylesheets

@@ -32,6 +32,17 @@
 
 //settings per viewport
 @mixin settings-per-viewport($vp-value, $vp-setting) {
+
+    //enable flex layout / get boxes with same height in a row
+    .#{$row-name}-#{$vp-setting}--flexed {
+        display: flex;
+
+        [class^='#{$col-prefix}'] {
+            display: flex;
+            align-items: stretch;
+        }
+    }
+
     @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
     @include content-wrapper(map-get($vp-value, 'wrapper-width'))
 }
@@ -71,10 +82,10 @@
         padding: $grid-gutter;
     }
 
-    .row {
+    .#{$row-name} {
         margin-left: -$grid-gutter;
         margin-right: -$grid-gutter;
-        
+
         &:after {
             clear: both;
             content: '';
@@ -82,3 +93,4 @@
         }
     }
 }
+

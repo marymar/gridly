@@ -35,12 +35,12 @@
 
     //enable flex layout / get boxes with same height in a row
     .#{$row-name}-#{$vp-setting}--flexed {
+        align-items: stretch;
         display: flex;
+        flex-wrap: wrap;
 
         [class^='#{$col-prefix}'] {
-            align-items: stretch;
             display: flex;
-            flex-wrap: wrap;
         }
     }
 

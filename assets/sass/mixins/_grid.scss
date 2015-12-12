@@ -38,8 +38,8 @@
         display: flex;
 
         [class^='#{$col-prefix}'] {
-            display: flex;
             align-items: stretch;
+            display: flex;
         }
     }
 

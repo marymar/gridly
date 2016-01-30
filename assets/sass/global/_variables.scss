@@ -4,7 +4,8 @@
  
 // GRID SETTINGS
 $row-name: 'row';
-$col-prefix: 'col-';
+$col-name: 'col';
+$col-prefix: $col-name + '-';
 $layout-grids: 12;
 $number-of-grids: 12;
 $grid-gutter: 1em;

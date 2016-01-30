@@ -44,6 +44,23 @@
         }
     }
 
+    //no padding to top and bottom for columns
+    .#{$col-name}-#{$vp-setting}--no-padded {
+        // scss-lint:disable ImportantRule
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+        // scss-lint:enable ImportantRule
+    }
+
+    //padded default for columns
+    .#{$col-name}-#{$vp-setting}--padded {
+        // scss-lint:disable ImportantRule
+        padding-bottom: $grid-gutter !important;
+        padding-top: $grid-gutter !important;
+        // scss-lint:enable ImportantRule
+    }
+
+
     @include grid($number-of-grids, '#{$col-prefix}#{$vp-setting}');
     @include content-wrapper(map-get($vp-value, 'wrapper-width'))
 }
